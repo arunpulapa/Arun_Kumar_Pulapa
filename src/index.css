@@ -1,0 +1,364 @@
+/* ---- Self-hosted fonts -------------------------------------------------
+   Served from /public/fonts so the paths are stable and preloadable. No
+   third-party request blocks first paint. Latin subset only.
+   ----------------------------------------------------------------------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/sora-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/sora-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/sora-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/sora-latin-800-normal.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   EDITORIAL — a warm, senior, light-first design system.
+   Paper canvas · ink type · one confident cobalt accent · hairline detail.
+   Dark mode is a refined counterpart, not the star.
+   ========================================================================= */
+
+@layer base {
+  :root {
+    /* Warm paper canvas */
+    --background: 40 33% 97%;      /* #FAF8F3 */
+    --foreground: 30 14% 11%;      /* warm ink */
+
+    --card: 40 40% 99%;
+    --card-foreground: 30 14% 11%;
+
+    --popover: 40 40% 99%;
+    --popover-foreground: 30 14% 11%;
+
+    /* Single confident accent: cobalt */
+    --primary: 224 76% 48%;        /* #1D4ED8-ish */
+    --primary-foreground: 0 0% 100%;
+
+    /* Tiny secondary touch (used sparingly) */
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 30 14% 11%;
+
+    --accent: 224 76% 48%;         /* = primary: one brand colour */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 40 18% 93%;
+    --muted-foreground: 32 8% 42%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 20% 87%;          /* warm hairline */
+    --input: 36 20% 87%;
+    --ring: 224 76% 48%;
+
+    --radius: 0.9rem;
+
+    /* Editorial surface shadow */
+    --shadow-sm: 0 1px 2px hsl(32 20% 20% / 0.05);
+    --shadow-md: 0 6px 24px -12px hsl(32 24% 24% / 0.18), 0 1px 2px hsl(32 20% 20% / 0.04);
+    --shadow-lg: 0 24px 60px -28px hsl(224 60% 30% / 0.28), 0 2px 6px hsl(32 20% 20% / 0.05);
+
+    --paper-line: 36 22% 90%;
+  }
+
+  .dark {
+    --background: 30 9% 7%;        /* warm near-black */
+    --foreground: 40 22% 92%;
+
+    --card: 30 8% 10%;
+    --card-foreground: 40 22% 92%;
+
+    --popover: 30 8% 10%;
+    --popover-foreground: 40 22% 92%;
+
+    --primary: 222 90% 64%;        /* brighter cobalt for dark */
+    --primary-foreground: 30 9% 7%;
+
+    --secondary: 30 6% 16%;
+    --secondary-foreground: 40 22% 92%;
+
+    --accent: 222 90% 64%;
+    --accent-foreground: 30 9% 7%;
+
+    --muted: 30 6% 15%;
+    --muted-foreground: 40 10% 62%;
+
+    --border: 34 8% 20%;
+    --input: 34 8% 20%;
+    --ring: 222 90% 64%;
+
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 8px 30px -16px hsl(0 0% 0% / 0.7);
+    --shadow-lg: 0 30px 70px -30px hsl(0 0% 0% / 0.8);
+
+    --paper-line: 34 8% 16%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Anchor jumps land below the fixed header instead of under it. */
+  section[id],
+  [id="education"] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Sora", "Plus Jakarta Sans", "Inter", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
+    color: hsl(var(--primary));
+  }
+
+  ::-webkit-scrollbar { width: 11px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--foreground) / 0.2);
+    border-radius: 999px;
+    border: 3px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--foreground) / 0.35); }
+}
+
+@layer components {
+  /* ---- Surfaces (theme-aware cards) ------------------------------------ */
+  .surface {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .surface-lg {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) + 0.35rem);
+    box-shadow: var(--shadow-md);
+  }
+  .surface-hover {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+  .surface-hover:hover {
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Frosted bar (nav) */
+  .frost {
+    background: hsl(var(--background) / 0.72);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ---- Editorial eyebrow / index label --------------------------------- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: hsl(var(--primary));
+  }
+
+  /* ---- Accent utilities ------------------------------------------------- */
+  .text-accent { color: hsl(var(--primary)); }
+
+  .link-underline {
+    position: relative;
+    background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover { background-size: 100% 1.5px; }
+
+  .btn-accent {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 8px 24px -10px hsl(var(--primary) / 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 14px 32px -12px hsl(var(--primary) / 0.7);
+  }
+
+  .btn-ghost {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-ghost:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* subtle accent chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--muted) / 0.6);
+    color: hsl(var(--foreground));
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  }
+  .chip:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: "Sora", "Plus Jakarta Sans", sans-serif; }
+
+  /* faint editorial texture */
+  .bg-paper-grid {
+    background-image:
+      linear-gradient(hsl(var(--paper-line) / 0.7) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--paper-line) / 0.7) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .animate-float      { animation: float 8s ease-in-out infinite; }
+  .animate-float-slow { animation: float 12s ease-in-out infinite; }
+  .animate-marquee    { animation: marquee 38s linear infinite; }
+
+  /* Hidden only when JS is running (index.html adds .js) — prerendered HTML
+     stays readable for no-JS visitors, crawlers, and link previews. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes fade-in {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-up {
+  0%   { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

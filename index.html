@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Per-route <title>, description, canonical, Open Graph, Twitter and
+      JSON-LD are emitted by src/components/Seo.tsx into each prerendered page.
+      Only genuinely global tags belong here.
+    -->
+    <title>Pulapa Arun Kumar | Freelance Full Stack Developer (React, Angular &amp; Node.js)</title>
+    <meta name="author" content="Pulapa Arun Kumar" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#FAF8F3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)" />
+    <meta name="google-site-verification" content="z4bmZNSiOpVzuU946MqwtT_trPZmg8ebxSVJYODz8V8" />
+
+    <!-- Scroll-reveal styles only apply when JS runs; without it, content stays visible. -->
+    <script>document.documentElement.classList.add("js")</script>
+
+    <!-- Fonts: self-hosted, no third-party render-blocking request -->
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/sora-latin-700-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/og-image.png" />
+  </head>
+
+  <body>
+    <!--
+      Static mirror of the React contact form. Netlify's build-time form
+      detection parses deployed HTML, and it cannot see a form that only exists
+      after React hydrates — so this hidden copy is what registers the form.
+      Field names MUST stay in sync with src/components/Contact.tsx.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="project"><option value="">-</option></select>
+      <textarea name="message"></textarea>
+    </form>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
